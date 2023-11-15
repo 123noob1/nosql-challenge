@@ -19,40 +19,40 @@ Use <code>NoSQL_setup.ipynb</code> located under the <code>src</code> for this s
 The magazine editors have some requested modifications for the database before you can perform any queries or analysis for them. Make the following changes to the <code>establishments</code> collection:
 
 1) An exciting new halal restaurant just opened in Greenwich, but hasn't been rated yet. The magazine has asked you to include it in your analysis. Add the following information to the database:
-```
-    {
-        "BusinessName":"Penang Flavours",
-        "BusinessType":"Restaurant/Cafe/Canteen",
-        "BusinessTypeID":"",
-        "AddressLine1":"Penang Flavours",
-        "AddressLine2":"146A Plumstead Rd",
-        "AddressLine3":"London",
-        "AddressLine4":"",
-        "PostCode":"SE18 7DY",
-        "Phone":"",
-        "LocalAuthorityCode":"511",
-        "LocalAuthorityName":"Greenwich",
-        "LocalAuthorityWebSite":"http://www.royalgreenwich.gov.uk",
-        "LocalAuthorityEmailAddress":"health@royalgreenwich.gov.uk",
-        "scores":{
-            "Hygiene":"",
-            "Structural":"",
-            "ConfidenceInManagement":""
-        },
-        "SchemeType":"FHRS",
-        "geocode":{
-            "longitude":"0.08384000",
-            "latitude":"51.49014200"
-        },
-        "RightToReply":"",
-        "Distance":4623.9723280747176,
-        "NewRatingPending":True
-    }
-```
+    ```
+        {
+            "BusinessName":"Penang Flavours",
+            "BusinessType":"Restaurant/Cafe/Canteen",
+            "BusinessTypeID":"",
+            "AddressLine1":"Penang Flavours",
+            "AddressLine2":"146A Plumstead Rd",
+            "AddressLine3":"London",
+            "AddressLine4":"",
+            "PostCode":"SE18 7DY",
+            "Phone":"",
+            "LocalAuthorityCode":"511",
+            "LocalAuthorityName":"Greenwich",
+            "LocalAuthorityWebSite":"http://www.royalgreenwich.gov.uk",
+            "LocalAuthorityEmailAddress":"health@royalgreenwich.gov.uk",
+            "scores":{
+                "Hygiene":"",
+                "Structural":"",
+                "ConfidenceInManagement":""
+            },
+            "SchemeType":"FHRS",
+            "geocode":{
+                "longitude":"0.08384000",
+                "latitude":"51.49014200"
+            },
+            "RightToReply":"",
+            "Distance":4623.9723280747176,
+            "NewRatingPending":True
+        }
+    ```
 3) Find the BusinessTypeID for "Restaurant/Cafe/Canteen" and return only the <code>BusinessTypeID</code> and <code>BusinessType</code> fields.
 4) Update the new restaurant with the <code>BusinessTypeID</code> you found.
 5) The magazine is not interested in any establishments in Dover, so check how many documents contain the Dover Local Authority. Then, remove any establishments within the Dover Local Authority from the database, and check the number of documents to ensure they were deleted.
-6) Some of the number values are stored as strings, when they should be stored as numbers.
+6) Some of the number values are stored as strings when they should be stored as numbers.
     - Use <code>update_many</code> to convert <code>latitude</code> and <code>longitude</code> to decimal numbers.
     - Use <code>update_many</code> to convert <code>RatingValue</code> to integer numbers.
 
@@ -75,10 +75,9 @@ Unless otherwise stated, for each question:
 2) Which establishments in London have a <code>RatingValue</code> greater than or equal to 4?<br/>
     <b>Hint:</b> The London Local Authority has a longer name than "London" so you will need to use $regex as part of your search.
 3) What are the top 5 establishments with a RatingValue of 5, sorted by lowest hygiene score, nearest to the new restaurant added, "Penang Flavours"?<br/>
-    <b>Hint:</b> You will need to compare the geocode to find the nearest locations. Search within 0.01 degree on either side of the latitude and longitude.
+    <b>Hint:</b> You must compare the geocode to find the nearest locations. Search within 0.01 degrees on either side of the latitude and longitude.
 5) How many establishments in each Local Authority area have a hygiene score of 0? Sort the results from highest to lowest, and print out the top ten local authority areas.<br/>
-   <b>Hint:</b> You will need to use the aggregation method to answer this.
-    The first 5 rows of your resulting DataFrame should look something like this:
+   <b>Hint:</b> You will need to use the aggregation method to answer this. The first 5 rows of your resulting DataFrame should look something like this:
    
     ||_id|count|
    |----|----|----|
