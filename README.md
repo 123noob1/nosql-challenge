@@ -55,12 +55,12 @@ The magazine editors have some requested modifications for the database before y
 6) Some of the number values are stored as strings, when they should be stored as numbers.
     - Use <code>update_many</code> to convert <code>latitude</code> and <code>longitude</code> to decimal numbers.
     - Use <code>update_many</code> to convert <code>RatingValue</code> to integer numbers.
-    - 
+
 ### PART 3: Exploratory Analysis
 Use <code>NoSQL_analysis.ipynb</code> located under <code>src</code> folder for this section of the challenge.
 
 Some notes to be aware of while you are exploring the dataset:
-- <code>RatingValue</code> refers to the overall rating decided by the Food Authority and ranges from 1-5. The higher the value, the better the rating.
+- <code>RatingValue</code> refers to the overall rating decided by the Food Authority and ranges from 1-5. The higher the value, the better the rating.<br/>
     <b>Note:</b> This field also includes non-numeric values such as 'Pass', where 'Pass' means that the establishment passed their inspection but isn't given a number rating. We will coerce non-numeric values to nulls during the database setup before converting ratings to integers.
 - The scores for Hygiene, Structural, and ConfidenceInManagement work in reverse. This means, the higher the value, the worse the establishment is in these areas.
 
@@ -72,11 +72,11 @@ Unless otherwise stated, for each question:
 - Convert the result to a Pandas DataFrame, print the number of rows in the DataFrame, and display the first 10 rows.
 
 1) Which establishments have a hygiene score equal to 20?
-2) Which establishments in London have a <code>RatingValue</code> greater than or equal to 4?
+2) Which establishments in London have a <code>RatingValue</code> greater than or equal to 4?<br/>
     <b>Hint:</b> The London Local Authority has a longer name than "London" so you will need to use $regex as part of your search.
-3) What are the top 5 establishments with a RatingValue of 5, sorted by lowest hygiene score, nearest to the new restaurant added, "Penang Flavours"?
+3) What are the top 5 establishments with a RatingValue of 5, sorted by lowest hygiene score, nearest to the new restaurant added, "Penang Flavours"?<br/>
     <b>Hint:</b> You will need to compare the geocode to find the nearest locations. Search within 0.01 degree on either side of the latitude and longitude.
-5) How many establishments in each Local Authority area have a hygiene score of 0? Sort the results from highest to lowest, and print out the top ten local authority areas.
+5) How many establishments in each Local Authority area have a hygiene score of 0? Sort the results from highest to lowest, and print out the top ten local authority areas.<br/>
    <b>Hint:</b> You will need to use the aggregation method to answer this.
     The first 5 rows of your resulting DataFrame should look something like this:
    
